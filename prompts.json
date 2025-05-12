@@ -1,0 +1,17 @@
+{
+  "prd_prompt": "Write a one-page Product Requirements Document (PRD) for an AI SaaS product called {{project_name}}. This product is described as follows: {{description}}. The PRD should include:\n- Problem Statement\n- Target Users\n- Key Features\n- User Flow\n- Business Model\n- Success Metrics",
+
+  "hld_prompt": "You are a senior software architect. Based on the following PRD, design a high-level architecture (HLD) for this AI SaaS:\n\n{{prd}}\n\nInclude:\n- Architecture diagram (text-based)\n- Component breakdown (frontend, backend, database, external APIs)\n- Communication flows\n- Tech stack recommendation",
+
+  "api_prompt": "Based on the following PRD, define a complete REST API schema for the app:\n\n{{prd}}\n\nInclude:\n- Endpoint URL\n- Method (GET, POST, etc.)\n- Parameters and payloads\n- Response schema (example JSON)\n- Authentication mechanism if applicable",
+
+  "dbschema_prompt": "Given this PRD, design a minimal relational database schema using PostgreSQL:\n\n{{prd}}\n\nInclude:\n- Table names\n- Field names with types\n- Primary/foreign keys\n- Relationships between tables\n- Notes on indexing or optimization",
+
+  "readme_prompt": "Write a README.md for a project called {{project_name}}. This is an AI SaaS product. Description: {{description}}\n\nUse the following PRD for context:\n\n{{prd}}\n\nStructure the README with:\n- Project Overview\n- Features\n- Tech Stack\n- Local Setup\n- Folder Structure\n- Deployment Instructions\n- License",
+
+  "requirements_prompt": "Write a `requirements.txt` for the backend of this AI SaaS application. It uses Flask as the web framework and Uvicorn as the ASGI server. The app is described by this PRD:\n\n{{prd}}\n\nInclude only necessary, production-grade dependencies with pinned versions.",
+
+  "packagejson_prompt": "Write a production-ready `package.json` for a Next.js frontend for this AI SaaS:\n\n{{prd}}\n\nInclude:\n- Name, version, description\n- Next.js and React dependencies\n- Scripts for `dev`, `build`, `start`\n- Any helpful devDependencies like Tailwind or ESLint",
+
+  "docker_prompt": "Based on this PRD, generate Docker setup files to run the fullstack app:\n\n{{prd}}\n\nCreate:\n1. Dockerfile for Flask backend (on port 5000)\n2. Dockerfile for Next.js frontend (on port 3000)\n3. docker-compose.yml that connects both services\n\nEnsure proper volume mapping and environment variable placeholders."
+}
