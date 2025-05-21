@@ -9,6 +9,7 @@ A Telegram bot that generates AI-powered project scaffolding and pushes it to Gi
 [![Twitter: justmalhar](https://img.shields.io/twitter/follow/justmalhar?style=social)](https://twitter.com/justmalhar)
 [![LinkedIn: justmalhar](https://img.shields.io/badge/-justmalhar-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/justmalhar/)](https://www.linkedin.com/in/justmalhar/)
 [![GitHub: Justmalhar](https://img.shields.io/github/followers/Justmalhar?label=follow&style=social)](https://github.com/Justmalhar)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/Justmalhar/telegram-github-agent)
 
 </div>
 
@@ -155,6 +156,25 @@ graph TD
 4. Use the `/new` command to create a new project
 5. Follow the prompts to specify project name and description
 6. The bot will generate all necessary files and create a GitHub repository
+
+## 🐳 Docker
+
+Build the image and run the bot in a container:
+
+```bash
+docker build -t telegram-github-bot .
+docker run --env-file .env telegram-github-bot
+```
+
+## 🚄 One-Click Deploy on Railway
+
+You can deploy this bot directly to Railway. Click the button at the top of this
+README or use the link below:
+
+<https://railway.app/new/template?template=https://github.com/Justmalhar/telegram-github-agent>
+
+After the project is created, add the environment variables from `.env.example`
+to the Railway dashboard and deploy.
 
 ## 📁 Project Structure
 
