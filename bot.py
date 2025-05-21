@@ -128,32 +128,27 @@ def push_to_github(name, path):
     
     if clone_url:
         # Configure git user for this repository
-        git_commands = [
-            f"cd {path}",
-            "git init",
-            "git config user.name 'Telegram Bot'",
-            "git config user.email 'bot@example.com'",
-            "git add .",
-            "git commit -m 'Initial commit'",
-            f"git remote add origin {clone_url}",
-            "git branch -M main",  # Rename current branch to main
-            "git push -u origin main"
-        ]
-        
-        git_command = " && ".join(git_commands)
-        
         try:
-            import subprocess
-            result = subprocess.run(git_command, shell=True, capture_output=True, text=True)
-            
-            if result.returncode != 0:
-                print(f"Error pushing to GitHub: {result.returncode}")
-                print(f"Error details: {result.stderr}")
-                return None
+            commands = [
+                ["git", "init"],
+                ["git", "config", "user.name", "Telegram Bot"],
+                ["git", "config", "user.email", "bot@example.com"],
+                ["git", "add", "."],
+                ["git", "commit", "-m", "Initial commit"],
+                ["git", "remote", "add", "origin", clone_url],
+                ["git", "branch", "-M", "main"],  # Rename current branch to main
+                ["git", "push", "-u", "origin", "main"],
+            ]
+
+            for cmd in commands:
+                result = subprocess.run(cmd, cwd=path, capture_output=True, text=True)
+                if result.returncode != 0:
+                    print(f"Error running {' '.join(cmd)}: {result.stderr}")
+                    return None
         except Exception as e:
             print(f"Exception during GitHub push: {str(e)}")
             return None
-            
+
         return clone_url
     return None
 
@@ -430,7 +425,7 @@ def main():
         generate_ai_file("Test HLD prompt", f"{test_project_path}/docs/HLD.md")
         generate_ai_file("Test API prompt", f"{test_project_path}/docs/API.md")
         generate_ai_file("Test DB Schema prompt", f"{test_project_path}/docs/DBSchema.md")
-        generate_ai_file("Test README prompt", f"{test_project_path}/docs/README.md")
+        generate_ai_file("Test README prompt", f"{test_project_path}/README.md")
         
         # Generate code files individually
         generate_ai_file("Test backend requirements", f"{test_project_path}/backend/requirements.txt")
